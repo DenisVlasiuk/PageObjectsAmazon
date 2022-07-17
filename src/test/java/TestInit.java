@@ -52,5 +52,18 @@ public class TestInit {
 public WebElement Pintscher(){
  return driver.findElement(By.xpath("//h2[contains(@class, 'contentCard-body-hdg u-vr1x')] [contains(text(), 'Affenpinscher')] "));
 }
+public WebElement goToProDj(){
+        return driver.findElement(By.xpath("//h3[contains(text(), 'инт')]"));
+
+}
+public WebElement searchToProDj(){
+        return driver.findElement(By.xpath("//input[@name='s']"));
+
+}
+
+public WebElement goToPioneer(){
+        return driver.findElement(By.xpath("//a[contains(text(), 'CDJ-2000NXS2 (2')]"));
+
+}
 
 }
