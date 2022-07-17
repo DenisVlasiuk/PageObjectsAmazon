@@ -1,3 +1,5 @@
+package tests;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -41,10 +43,7 @@ public class TestInit {
     }
 
 
-    public WebElement getSearchField(){
-        return driver.findElement(By.xpath("//input[@name='q']"));
 
-    }
     public WebElement clickDogList() {
         return driver.findElement(By.xpath("//*[contains(text(), 'List of Dog Breeds')]"));
 
