@@ -4,14 +4,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class AmazonHomePage extends BasePage {
-    public AmazonHomePage(WebDriver driver) {
+public class AmazonHomePageElements extends BasePage{
+
+
+    public AmazonHomePageElements(WebDriver driver) {
         super(driver);
-    }
-
-    public void navigateAmazon(){
-        driver.get("https://www.amazon.com/");
-
     }
 
 
@@ -36,5 +33,6 @@ public class AmazonHomePage extends BasePage {
 
 
     }
+
 
 }

@@ -2,33 +2,45 @@ package tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageObjects.AmazonHomePage;
+import pageObjects.AmazonHomePageHelper;
 import pageObjects.AmazonSearchResultsPage;
 
 public class testAmazon extends TestInit{
 
     @Test
     public void checkHeader(){
-        AmazonHomePage amazonHomePage = new AmazonHomePage(driver);
-        amazonHomePage.navigateAmazon();
+        AmazonHomePageHelper amazonHomePageHelper = new AmazonHomePageHelper(driver);
+        amazonHomePageHelper.navigateAmazon();
 
-        Assert.assertTrue(amazonHomePage.getLogoImage().isDisplayed());
-        Assert.assertTrue(amazonHomePage.getDeliverTo().isDisplayed());
-        Assert.assertTrue(amazonHomePage.getSearchField().isDisplayed());
-        Assert.assertTrue(amazonHomePage.getSearchImageButton().isDisplayed());
+        Assert.assertTrue(amazonHomePageHelper.getLogoImage().isDisplayed());
+        Assert.assertTrue(amazonHomePageHelper.getDeliverTo().isDisplayed());
+        Assert.assertTrue(amazonHomePageHelper.getSearchField().isDisplayed());
+        Assert.assertTrue(amazonHomePageHelper.getSearchImageButton().isDisplayed());
 
     }
 @Test
     public void checkSearch(){
-    AmazonHomePage amazonHomePage = new AmazonHomePage(driver);
-    amazonHomePage.navigateAmazon();
+    AmazonHomePageHelper amazonHomePageHelper = new AmazonHomePageHelper(driver);
+    amazonHomePageHelper.navigateAmazon();
 
-    amazonHomePage.getSearchField().sendKeys("hat");
-    amazonHomePage.getSearchImageButton().click();
+    amazonHomePageHelper.getSearchField().sendKeys("hat");
+    amazonHomePageHelper.getSearchImageButton().click();
 
     AmazonSearchResultsPage amazonSearchResultsPage = new AmazonSearchResultsPage(driver);
     Assert.assertTrue(amazonSearchResultsPage.getResultsField().isDisplayed());
 
+    }
+
+    @Test
+    public void checkSearchPen(){
+        AmazonHomePageHelper amazonHomePageHelper = new AmazonHomePageHelper(driver);
+        amazonHomePageHelper.navigateAmazon();
+
+        AmazonSearchResultsPage AmazonSearchResultsPage = amazonHomePageHelper.search("Pen");
+
+        AmazonSearchResultsPage amazonSearchResultsPage = new AmazonSearchResultsPage(driver);
+        Assert.assertTrue(amazonSearchResultsPage.getResultsField().isDisplayed());
+        Assert.assertTrue(amazonSearchResultsPage.getElementsWithPenText().size() > 10);
     }
 
 }
